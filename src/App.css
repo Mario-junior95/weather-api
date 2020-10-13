@@ -1,25 +1,172 @@
-.app {
-  height: 100vh;
-  width: 100vw;
-  transition: background-color 1s ease-in;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
 }
 
-.app__header,
-.app__main {
-  width: 100%;
+/*        header Section       */
+.header{
+  display: grid;
+  display: -ms-grid;
+  grid-template-columns: 25% 14%;
+  align-items: baseline;
+  border:1px #759eda solid;
+  background-color: #759eda;
+  padding: 1.2% 1%;
+}
+
+.header p{
+  color:#ffffff;
+  font-weight: 400;
+  font-size: 21px;
+
+}
+
+.header button{
+  background-color: #5879c7;
+  border: 1px #5879c7 solid;
+  height: 8vh;
+  width: 12.5vw;
+  border-radius: 3%;
+}
+
+.header button a{
+  text-decoration: none;
+  text-transform: uppercase;
+  color:#11165d;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+/*       main          */
+
+.main{
+  background-color: #9ccef4;
+  overflow-x: hidden;
+}
+
+.mostlycloudy_section{
   display: flex;
+  display: -webkit-flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  font-family: "Raleway", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/*  Search bar */
+img.mostlycloudy_img{
+  max-width: 18%;
+  max-height: 18%;
+}
 
-/* Current weather */
+#overcast{
+  color:white;
+  font-weight:700;
+  font-size: 24px;
+  margin: 0 0 2% 0;
+}
 
-div {
-  border: 5px solid red;
+#temperature{
+  color:#11165d;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 2.7% 0%;
+}
+
+.degree{
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.degree::after{
+  content:"° to ";
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.Celsius{
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.Celsius::after{
+  content: "°C";
+  font-weight: 400;
+  font-size: 24px;
+}
+
+#Hum_Pres{
+  color:#11165d;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  width: 21%;
+  margin: 0 0 5.4% 0;
+}
+
+#pres{
+  font-weight: 400;
+}
+
+#hum{
+  font-weight: 400;
+}
+
+#hum::after{
+  content: "%";
+
+}
+
+.list_hours{
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-around;
+}
+
+.list_hours span {
+  font-size: 18px;
+  text-align: center;
+}
+
+
+.list_icons{
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-around;
+  margin-top: 3%;
+  
+  
+}
+
+.mostlycloudy{
+  max-width: 8%;
+  max-height: 7%;
+}
+
+
+
+.list_degree{
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-around;  
+  margin-top:3%;
+  padding-bottom:7%;
+}
+
+.list_degree span {
+  font-size: 18px;
+  text-align: center;
+}
+
+.list_degree span::after{
+  content: "°C";
+}
+
+.weather_list{
+  width:80%;
+  margin:0 auto;
 }
