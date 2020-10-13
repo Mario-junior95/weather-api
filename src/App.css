@@ -19,12 +19,23 @@
   padding: 1.2% 1%;
 }
 
-.header p{
-  color:#ffffff;
+[type="text"]{
+  background-color: #759eda;
+  border:transparent;
+  font-size:23px;
+  color:white;
   font-weight: 400;
-  font-size: 21px;
-
+  margin-top:3%;
+  padding-bottom:3.7%;
+  
 }
+[type="text"]:focus{
+  border-bottom:1px rgba(17, 22, 93, 0.3) inset;
+  width:90%;
+  outline: none;
+}
+
+
 
 .header button{
   background-color: #5879c7;
@@ -51,7 +62,6 @@
 
 .mostlycloudy_section{
   display: flex;
-  display: -webkit-flex;
   flex-direction: column;
   align-items: center;
 }
@@ -102,7 +112,6 @@ img.mostlycloudy_img{
   font-weight: 700;
   font-size: 18px;
   display: flex;
-  display: -webkit-flex;
   justify-content: space-between;
   width: 21%;
   margin: 0 0 5.4% 0;
@@ -123,7 +132,6 @@ img.mostlycloudy_img{
 
 .list_hours{
   display: flex;
-  display: -webkit-flex;
   justify-content: space-around;
 }
 
@@ -135,7 +143,6 @@ img.mostlycloudy_img{
 
 .list_icons{
   display: flex;
-  display: -webkit-flex;
   justify-content: space-around;
   margin-top: 3%;
   
@@ -151,7 +158,6 @@ img.mostlycloudy_img{
 
 .list_degree{
   display: flex;
-  display: -webkit-flex;
   justify-content: space-around;  
   margin-top:3%;
   padding-bottom:7%;

@@ -24,7 +24,7 @@ class App extends Component {
     return (
       <div className="app">
         <div className = "header">
-          <p>london</p>
+        <input type="text" placeholder="Type a city name"></input>
           <form>
             <button><a href="javascript:;">find weather</a></button>
           </form>
