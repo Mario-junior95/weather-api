@@ -10,14 +10,20 @@
 
 /*        header Section       */
 .header{
-  display: grid;
-  display: -ms-grid;
-  grid-template-columns: 25% 14%;
-  align-items: baseline;
   border:1px #759eda solid;
   background-color: #759eda;
   padding: 1.2% 1%;
 }
+
+.header form{
+  display: grid;
+  display: -ms-grid;
+  grid-template-columns: 25% 14%;
+  align-items: baseline;
+}
+
+
+
 
 [type="text"]{
   background-color: #759eda;
@@ -29,6 +35,7 @@
   padding-bottom:3.7%;
   
 }
+
 [type="text"]:focus{
   border-bottom:1px rgba(17, 22, 93, 0.3) inset;
   width:90%;
@@ -134,133 +141,114 @@ img.mostlycloudy_img{
 
 }
 
-.list_hours{
-  display: flex;
-  justify-content: space-around;
-}
-
-.list_hours span {
+section span:first-child , section span:last-child{
   font-size: 18px;
   text-align: center;
 }
 
-
-.list_icons{
-  display: flex;
-  justify-content: space-around;
-  margin-top: 3%;
-  
-  
-}
-
-.mostlycloudy{
-  max-width: 8%;
-  max-height: 7%;
-}
-
-
-
-.list_degree{
-  display: flex;
-  justify-content: space-around;  
-  margin-top:3%;
-  padding-bottom:7%;
-}
-
-.list_degree span {
-  font-size: 18px;
-  text-align: center;
-}
-
-.list_degree span::after{
+section span:last-child::after{
   content: "°C";
 }
 
-.weather_list{
-  width:80%;
-  margin:0 auto;
+
+
+.weather_list {
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  max-width: 75%;
+  margin: 0 auto;
 }
-  /* Responsive mobile */
+
+
+.weather_list section .mostlycloudy{
+  max-width: 50%;
+  max-height: 50%;
+}
+
+.weather_list section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section span , section img:nth-child(2) {
+  margin-bottom: 18%;
+}
+
+.weather_list section:last-child{
+  margin-bottom: 25%;
+}
+
+
+/*         Responsive on Mobile */
+
 @media only screen and (max-width:500px){
-
   .header{
-    grid-template-columns: 40% 40%;
-    display: -moz-grid;
-    padding: 2% 2%;
-    grid-column-gap:25%;
+    padding: 6.2% 1%;
   }
-
-
-  [type="text"]{
-    background-color: #759eda;
-    border:transparent;
-    font-size:14px;
-    color:white;
-    font-weight: 400;
-    margin-top:3%;
-    padding-bottom:3.7%;
-    
-  }
-  [type="text"]:focus{
-    border-bottom:1px rgba(17, 22, 93, 0.3) inset;
-    width:100%;
-    outline: none;
-    
+  
+  .header form{
+    display: grid;
+    display: -ms-grid;
+    grid-template-columns: 50% 50%;
+    align-items: baseline;
   }
 
   .header button{
-    background-color: #5879c7;
-    border: 1px #5879c7 solid;
-    height: 6vh;
-    min-width: 12.5vw;
-    border-radius: 3%;
-    padding:0 12px;
-    
-   
+    height: 11vh;
+    box-shadow:2px 2px #11165d;
   }
-  
-  .header button a{
-    text-decoration: none;
-    text-transform: uppercase;
-    color:#11165d;
-    font-size: 14px;
-    font-weight: 400;
+
+  img.mostlycloudy_img {
+    max-width: 50%;
+    max-height: 50%;
   }
-  img.mostlycloudy_img{
-    max-width: 32%;
-    max-height: 32%;
+
+  #overcast {
+    font-size: 35px;
+    margin: 0 0 5% 0;
   }
 
   #temperature{
-    margin: 0 0 5.4% 0%;
+    font-size: 40px;
+  }
+
+  #temperature .degree,#temperature .Celsius{
+    font-size: 30px;
   }
   
-  #Hum_Pres{
-    width: 75%;
-    font-size: 20px;
-    display:flex;
-    display: -webkit-flex;
-    margin: 0 0 10% 0;
-   
-  }
-    
-  #Hum_Pres span{
-    margin-left:1%;
-    
-   
+  #Hum_Pres {
+    font-size: 31px;
+    width: 95%;
+    margin: 0 0 13% 0;
   }
 
-#overcast{
-  margin: 0 0 5% 0;
-}
+  .weather_list {
+    display: grid;
+    display: -moz-grid;
+    grid-template-columns: repeat(2,1fr);
+    max-width: 75%;
+    margin: 0 auto;
+  }
 
+  section span:first-child, section span:last-child {
+    font-size: 30px;
+  }
 
+  .weather_list section .mostlycloudy {
+    max-width: 60%;
+    max-height: 60%;
+  }
 
-.mostlycloudy {
-  max-width: 100%;
-  max-height: 100%;
-}
+  section:last-child{
+    position: relative;
+    left: 50%;
+  }
 
-
-
+  .list1 , .list4, .list5{
+    background-color:#759eda;
+    border:1px #11165d inset;
+    box-shadow:2px 2px #11165d;
+  }
+  
 }

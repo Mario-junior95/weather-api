@@ -24,8 +24,8 @@ class App extends Component {
     return (
       <div className="app">
         <div className = "header">
-        <input type="text" placeholder="Type a city name"></input>
           <form>
+            <input type="text" placeholder="Type a city name"></input>
             <button><a href="javascript:;">find weather</a></button>
           </form>
         </div>
@@ -41,37 +41,45 @@ class App extends Component {
               <span id="pres">1008.48</span>
             </p>
           </div>
-          <div class="weather_list">
-            <section class="list_hours">
+          <div className="weather_list">
+          <section className="list1">
               <span>03:00</span>
-              <span>06:00</span>
-              <span>09:00</span>
-              <span>12:00</span>
-              <span>15:00</span>
-              <span>18:00</span>
-              <span>21:00</span>
-            </section>
-            <section class="list_icons">
-            <img alt="mostlycloudy icon" src={mostlycloudy} className="mostlycloudy" />
-            <img alt="mostlycloudy icon" src={mostlycloudy} className="mostlycloudy" />
-            <img alt="mostlycloudy icon" src={clear} className="mostlycloudy" />
-            <img alt="mostlycloudy icon" src={clear} className="mostlycloudy" />
-            <img alt="mostlycloudy icon" src={clear} className="mostlycloudy" />
-            <img alt="mostlycloudy icon" src={clear} className="mostlycloudy" />
-            <img alt="mostlycloudy icon" src={mostlycloudy} className="mostlycloudy" />
-            </section>
-            <section class="list_degree">
+              <img alt="mostlycloudy icon" src={mostlycloudy} className="mostlycloudy" />
               <span>8</span>
+          </section>
+          <section>
+              <span>06:00</span>
+              <img alt="mostlycloudy icon" src={mostlycloudy} className="mostlycloudy" />
               <span>9</span>
+          </section>
+          <section >
+              <span>09:00</span>
+              <img alt="mostlycloudy icon" src={clear} className="mostlycloudy" />
               <span>14</span>
+          </section>
+          <section className="list4">
+              <span>12:00</span>
+              <img alt="mostlycloudy icon" src={clear} className="mostlycloudy" />
               <span>17</span>
+          </section>
+          <section class="list5">
+              <span>15:00</span>
+              <img alt="mostlycloudy icon" src={clear} className="mostlycloudy" />
               <span>18</span>
+          </section>
+          <section>
+              <span>18:00</span>
+              <img alt="mostlycloudy icon" src={clear} className="mostlycloudy" />
               <span>16</span>
+          </section>
+          <section>
+              <span>21:00</span>
+              <img alt="mostlycloudy icon" src={mostlycloudy} className="mostlycloudy" />
               <span>13</span>
-            </section>
-          </div>
+          </section>
         </div>
       </div>
+    </div>
     );
   }
 }
