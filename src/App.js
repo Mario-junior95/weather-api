@@ -30,81 +30,144 @@ class Headers extends Component{
 }
 
 class CurrentWeather extends Component{
-  render(){
-    console.log(this.props.current);
-    return(
-      <div className="mostlycloudy_section">
-            <img alt="mostlycloudy icon" src={mostlycloudy} className="mostlycloudy_img" />
-            <p id="overcast">overcast clouds</p>
-    <p id="temperature">Temperature&nbsp;&nbsp;<span class="degree">{this.props.current.main.temp_min}</span><span class="Celsius">{this.props.current.main.temp_max}</span></p>
-            <p id="Hum_Pres">
-              <span>Humidity</span>
-              <span id="hum">{this.props.current.main.humidity}</span>
-              <span>Pressure</span>
-              <span id="pres">{this.props.current.main.pressure}</span>
-            </p>
-          </div>
-    );
-  }
+ render() {
+    // alert(this.props.currentweather.weather[0].id);
+    var icon = [];
+    var id =this.props.current.weather[0].id; 
+    if(id>801)
+       icon.push(<img className="mostlycloudy_img" src={require('./img/weather-icons/mostlycloudy.svg')} alt="storm icon" />);
+    else if(id==801)
+    icon.push(<img className="mostlycloudy_img" src={require('./img/weather-icons/partlycloudy.svg')} alt="storm icon" />);
+    else if(id==800)
+    icon.push(<img className="mostlycloudy_img" src={require('./img/weather-icons/clear.svg')} alt="storm icon" />);
+    else if(id>=700 )
+    icon.push(<img className="mostlycloudy_img" src={require('./img/weather-icons/fog.svg')} alt="storm icon" />);
+    else if(id>=600)
+    icon.push(<img className="mostlycloudy_img" src={require('./img/weather-icons/snow.svg')} alt="storm icon" />);
+    else if(id>=500)
+    icon.push(<img className="mostlycloudy_img" src={require('./img/weather-icons/rain.svg')} alt="storm icon" />);
+    else if(id>=300)
+    icon.push(<img className="mostlycloudy_img" src={require('./img/weather-icons/drizzle.svg')} alt="storm icon" />);
+    else if(id<300)
+    icon.push(<img className="mostlycloudy_img" src={require('./img/weather-icons/storm.svg')} alt="storm icon" />);
+    
+    
+      return (
+        <div className="mostlycloudy_section">
+          
+        {icon}
+        <p id="overcast">{this.props.current.weather[0].description}</p>
+     <p id="temperature">Temperature&nbsp;&nbsp;<span class="degree">{this.props.current.main.temp_min}</span><span class="Celsius">{this.props.current.main.temp_max}</span></p>
+             <p id="Hum_Pres">
+               <span>Humidity</span>
+               <span id="hum">{this.props.current.main.humidity}</span>
+               <span>Pressure</span>
+               <span id="pres">{this.props.current.main.pressure}</span>
+             </p>
+            </div>
+      );
+    }
 }
 
 class Weather_list extends Component{
-  render(){
-    var list = this.props.list;
-    // console.log(list[0]);
-    var tab =[];
-    for(var i = 1;i<8;i++){
-      tab.push(
-        <section className="list1">
-          <span>{list[i].dt_txt.substr(11,5)}</span>
-          <img alt="mostlycloudy icon" src={mostlycloudy} className="mostlycloudy" />
-          <span>{list[i].main.temp}</span>
-      </section>
-      );
+  state = {
+    input: ""
+  };
+
+  render() {
+ 
+    var items = this.props.list.map((detail) => 
+    <li>{detail.dt_txt.substr(11,5)}</li>
+    );
+    var list = [];
+    
+    
+
+var id;
+    for(var i=1;i<8;i++){
+      console.log(items[0]);
+      id =items[0]._self.props.list[i].weather[0].id; 
+      if(id>801)
+      list.push(
+        <section className="list_bg"> 
+                <span>{items[0]._self.props.list[i].dt_txt.substr(11,5)}</span>
+                <img alt="mostlycloudy icon" src={mostlycloudy} className="mostlycloudy" />
+                <span>{this.props.list[i].main.temp}</span>
+             </section>
+        );
+
+else if(id==801)
+list.push(
+    <section className="list_bg">
+       <span>{items[0]._self.props.list[i].dt_txt.substr(11,5)}</span>
+       <img alt="mostlycloudy icon" src={require('./img/weather-icons/partlycloudy.svg')} className="mostlycloudy" />
+       <span>{this.props.list[i].main.temp}</span>
+    </section>
+  );
+  else if(id==800)
+  list.push(
+     <section className="list_bg">
+         <span>{items[0]._self.props.list[i].dt_txt.substr(11,5)}</span>
+        <img src={require('./img/weather-icons/clear.svg')} alt="storm icon" className="mostlycloudy" />
+       <span>{this.props.list[i].main.temp}</span>
+    </section>
+    );
+
+
+
+else if(id>=700)
+list.push(
+   <section className="list_bg">
+     <span>{items[0]._self.props.list[i].dt_txt.substr(11,5)}</span>
+     <img src={require('./img/weather-icons/fog.svg')} alt="storm icon"  />
+     <span>{this.props.list[i].main.temp}</span>
+   </section>
+  );
+
+  else if(id>=600)
+  list.push(
+    <section className="list_bg">
+      <span>{items[0]._self.props.list[i].dt_txt.substr(11,5)}</span>
+      <img src={require('./img/weather-icons/snow.svg')} alt="storm icon" className="mostlycloudy" />
+      <span>{this.props.list[i].main.temp}</span>
+    </section>);
+
+
+else if(id>=500)
+list.push(
+  <section className="list_bg">
+ <span>{items[0]._self.props.list[i].dt_txt.substr(11,5)}</span>
+    <img src={require('./img/weather-icons/rain.svg')} alt="storm icon" className="mostlycloudy"/>
+    <span>{this.props.list[i].main.temp}</span>
+   </section>
+  );
+
+else if(id>=300)
+list.push(
+<section className="list_bg">
+  <span>{items[0]._self.props.list[i].dt_txt.substr(11,5)}</span>
+    <img src={require('./img/weather-icons/drizzle.svg')} alt="storm icon" className="mostlycloudy" />
+    <span>{this.props.list[i].main.temp}</span>
+  </section>);
+  else if(id<300)
+  list.push(
+  <section className="list_bg">
+    <span>{items[0]._self.props.list[i].dt_txt.substr(11,5)}</span>
+      <img src={require('./img/weather-icons/storm.svg')} alt="storm icon" />
+      <span>{this.props.list[i].main.temp}</span>
+    </section>);
+
 
     }
 
-    return(
+
+    return (
       <div className="weather_list">
-      {/* <section className="list1"> }
-          {<span>03:00</span>
-          <img alt="mostlycloudy icon" src={mostlycloudy} className="mostlycloudy" />
-          <span>8</span>
-      </section>
-      <section>
-          <span>06:00</span>
-          <img alt="mostlycloudy icon" src={mostlycloudy} className="mostlycloudy" />
-          <span>9</span>
-      </section>
-      <section >
-          <span>09:00</span>
-          <img alt="clear icon" src={clear} className="mostlycloudy" />
-          <span>14</span>
-      </section>
-      <section className="list4">
-          <span>12:00</span>
-          <img alt="clear icon" src={clear} className="mostlycloudy" />
-          <span>17</span>
-      </section>
-      <section class="list5">
-          <span>15:00</span>
-          <img alt="clear icon" src={clear} className="mostlycloudy" />
-          <span>18</span>
-      </section>
-      <section>
-          <span>18:00</span>
-          <img alt="clear icon" src={clear} className="mostlycloudy" />
-          <span>16</span>
-      </section>
-      <section>
-          <span>21:00</span>
-          <img alt="mostlycloudy icon" src={mostlycloudy} className="mostlycloudy" />
-          <span>13</span>
-      </section> */}
-      {tab}
-    </div>
+            {list}
+          </div>
     );
   }
+
 }
 // http:api.openweathermap.org/data/2.5/forecast?q=London&cnt=8&units=metric&appid=f5c2243aa45751703de79c648dd59473
 var name="London";

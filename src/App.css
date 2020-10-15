@@ -245,10 +245,10 @@ section span , section img:nth-child(2) {
     left: 50%;
   }
 
-  .list1 , .list4, .list5{
+
+  .weather_list .list_bg:nth-child(1), .list_bg:nth-child(4), .list_bg:nth-child(5){
     background-color:#759eda;
     border:1px #11165d inset;
     box-shadow:2px 2px #11165d;
   }
-  
 }
