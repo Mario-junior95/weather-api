@@ -9,30 +9,34 @@ import clear from "../src/img/weather-icons/clear.svg";
 import "./App.css";
 
 class Headers extends Component{
+  
   render(){
-      return (
+    var name = this.props.name;
+
+    return (
         <div className = "header">
         <form>
           <input type="text" placeholder="Type a city name"></input>
-          <button><a href="javascript:;">find weather</a></button>
+          <button><a href="javascript:;">{name}</a></button>
         </form>
       </div>
       );
   }
 }
 
-class Mostlycloudy extends Component{
+class CurrentWeather extends Component{
   render(){
+    console.log(this.props.current);
     return(
       <div className="mostlycloudy_section">
             <img alt="mostlycloudy icon" src={mostlycloudy} className="mostlycloudy_img" />
             <p id="overcast">overcast clouds</p>
-            <p id="temperature">Temperature&nbsp;&nbsp;<span class="degree">10</span><span class="Celsius">11</span></p>
+    <p id="temperature">Temperature&nbsp;&nbsp;<span class="degree">{this.props.current.main.temp_min}</span><span class="Celsius">{this.props.current.main.temp_max}</span></p>
             <p id="Hum_Pres">
               <span>Humidity</span>
-              <span id="hum">78</span>
+              <span id="hum">{this.props.current.main.humidity}</span>
               <span>Pressure</span>
-              <span id="pres">1008.48</span>
+              <span id="pres">{this.props.current.main.pressure}</span>
             </p>
           </div>
     );
@@ -41,10 +45,24 @@ class Mostlycloudy extends Component{
 
 class Weather_list extends Component{
   render(){
+    var list = this.props.list;
+    // console.log(list[0]);
+    var tab =[];
+    for(var i = 1;i<8;i++){
+      tab.push(
+        <section className="list1">
+          <span>{list[i].dt_txt.substr(11,5)}</span>
+          <img alt="mostlycloudy icon" src={mostlycloudy} className="mostlycloudy" />
+          <span>{list[i].main.temp}</span>
+      </section>
+      );
+
+    }
+
     return(
       <div className="weather_list">
-      <section className="list1">
-          <span>03:00</span>
+      {/* <section className="list1"> }
+          {<span>03:00</span>
           <img alt="mostlycloudy icon" src={mostlycloudy} className="mostlycloudy" />
           <span>8</span>
       </section>
@@ -55,29 +73,30 @@ class Weather_list extends Component{
       </section>
       <section >
           <span>09:00</span>
-          <img alt="mostlycloudy icon" src={clear} className="mostlycloudy" />
+          <img alt="clear icon" src={clear} className="mostlycloudy" />
           <span>14</span>
       </section>
       <section className="list4">
           <span>12:00</span>
-          <img alt="mostlycloudy icon" src={clear} className="mostlycloudy" />
+          <img alt="clear icon" src={clear} className="mostlycloudy" />
           <span>17</span>
       </section>
       <section class="list5">
           <span>15:00</span>
-          <img alt="mostlycloudy icon" src={clear} className="mostlycloudy" />
+          <img alt="clear icon" src={clear} className="mostlycloudy" />
           <span>18</span>
       </section>
       <section>
           <span>18:00</span>
-          <img alt="mostlycloudy icon" src={clear} className="mostlycloudy" />
+          <img alt="clear icon" src={clear} className="mostlycloudy" />
           <span>16</span>
       </section>
       <section>
           <span>21:00</span>
           <img alt="mostlycloudy icon" src={mostlycloudy} className="mostlycloudy" />
           <span>13</span>
-      </section>
+      </section> */}
+      {tab}
     </div>
     );
   }
@@ -85,12 +104,23 @@ class Weather_list extends Component{
 
 class App extends Component {
   render() {
+    var list = fakeWeatherData.list;
+    for(var i = 0;i<list.length;i++){
+      list[i].main.temp_max-=273.15;
+      list[i].main.temp_min-=273.15;
+      list[i].main.temp-=273.15;
+      list[i].main.temp = Math.round(list[i].main.temp);
+      list[i].main.temp_min = Math.round(list[i].main.temp_min);
+      list[i].main.temp_max = Math.round(list[i].main.temp_max);
+
+    }
+    console.log(list);
      return (
-       <div className="app">
-         <Headers/>
+       <div className="app" >
+         <Headers name="FIND WEATHER"/>
          <div className="main">
-           <Mostlycloudy/>
-           <Weather_list/>
+           <CurrentWeather current = {list[0]}/>
+           <Weather_list list = {list}/>
        </div>
      </div>
      );
